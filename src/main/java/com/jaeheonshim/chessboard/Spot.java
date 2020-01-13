@@ -14,6 +14,10 @@ public class Spot {
 		  return piece;
 	 }
 
+	 public void setPiece (Piece piece) {
+		  this.piece = piece;
+	 }
+
 	 public int getX () {
 		  return x;
 	 }
