@@ -19,7 +19,11 @@ public abstract class Piece {
 	 	 moved = true;
 	 }
 
-	 public boolean isMoved () {
+	public void setKilled(boolean killed) {
+		this.killed = killed;
+	}
+
+	public boolean isMoved () {
 		  return moved;
 	 }
 }

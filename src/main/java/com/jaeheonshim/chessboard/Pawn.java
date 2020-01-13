@@ -11,6 +11,11 @@ public class Pawn extends Piece {
 	 	 	 //Can't kill or move over piece of same color
 			  return false;
 		 }
+	 	 if(end.getPiece() != null && start.getX() == end.getX()) {
+	 	 	// can't kill piece moving forwards
+			 return false;
+		 }
+
 	 	 if(!isMoved()) {
 	 	 	 if(start.getX() == end.getX() && Math.abs(start.getY() - end.getY()) <= 2) {
 	 	 	 	 return true;
