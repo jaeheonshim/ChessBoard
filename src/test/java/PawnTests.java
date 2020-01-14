@@ -3,6 +3,7 @@ import com.jaeheonshim.chessboard.Pawn;
 import com.jaeheonshim.chessboard.Spot;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.Arrays;
 
@@ -59,4 +60,18 @@ public class PawnTests {
 
 		Assert.assertFalse("Pawn should not kill going forwards", testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(1, 1)));
 	}
+
+	@Test
+	public void whitePawnShouldNotMoveBackwards() {
+        Board testBoard = new Board();
+        testBoard.move(testBoard.getSpot(0, 1), testBoard.getSpot(0, 2));
+        Assert.assertFalse("White pawns should not move backwards", testBoard.move(testBoard.getSpot(0, 2), testBoard.getSpot(0, 1)));
+    }
+
+    @Test
+    public void blackPawnShouldNotMoveBackwards() {
+        Board testBoard = new Board();
+        testBoard.move(testBoard.getSpot(0, 6), testBoard.getSpot(0, 5));
+        Assert.assertFalse("Black pawns should not move backwards", testBoard.move(testBoard.getSpot(0, 5), testBoard.getSpot(0, 6)));
+    }
 }
