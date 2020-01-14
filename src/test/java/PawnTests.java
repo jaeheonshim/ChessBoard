@@ -52,7 +52,7 @@ public class PawnTests {
 		for(int i = 0; i < newBoard.length; i++) {
 			Arrays.fill(newBoard[i], null);
 		}
-		newBoard[1][0] = new Spot(1, 1, new Pawn(true));
+		newBoard[1][1] = new Spot(1, 1, new Pawn(true));
 		newBoard[0][1] = new Spot(1, 0, new Pawn(false));
 
 		testBoard.setBoard(newBoard);
