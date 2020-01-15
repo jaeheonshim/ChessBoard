@@ -10,6 +10,15 @@ public class Board {
     }
 
     public void resetBoard() {
+        Spot[][] blankBoard = new Spot[8][8];
+        for (int i = 0; i < blankBoard.length; i++) {
+            for (int j = 0; j < blankBoard.length; j++) {
+                blankBoard[i][j] = new Spot(j, i, null);
+            }
+        }
+
+        setBoard(blankBoard);
+
         board[1][0] = new Spot(0, 1, new Pawn(true));
         board[1][1] = new Spot(1, 1, new Pawn(true));
         board[1][2] = new Spot(2, 1, new Pawn(true));
@@ -31,8 +40,8 @@ public class Board {
         board[6][6] = new Spot(6, 6, new Pawn(false));
         board[6][7] = new Spot(7, 6, new Pawn(false));
 
-        board[6][0] = new Spot(0, 6, new Rook(false));
-        board[6][7] = new Spot(7, 6, new Rook(false));
+        board[7][0] = new Spot(0, 6, new Rook(false));
+        board[7][7] = new Spot(7, 6, new Rook(false));
 
         for (int i = 2; i < 6; i++) {
             for (int j = 0; j < 8; j++) {
@@ -51,10 +60,10 @@ public class Board {
 
     public boolean move(Spot begin, Spot end) {
         if (begin.getPiece().canMove(this, begin, end)) {
-		  	if(end.getPiece() != null) {
-		  		end.getPiece().setKilled(true);
-		  		end.setPiece(null);
-			}
+            if (end.getPiece() != null) {
+                end.getPiece().setKilled(true);
+                end.setPiece(null);
+            }
             end.setPiece(begin.getPiece());
             begin.getPiece().setMoved();
             begin.setPiece(null);
@@ -67,10 +76,10 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(64);
-        for(Spot[] row : board) {
-            for(Spot spot : row) {
-                if(spot != null) {
-                    stringBuilder.append(spot.toString());
+        for (int i = board.length - 1; i >= 0; i--) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j].getPiece() != null) {
+                    stringBuilder.append(board[i][j].getPiece() .toString());
                 } else {
                     stringBuilder.append(" ");
                 }
@@ -83,6 +92,7 @@ public class Board {
 
     public static void main(String[] args) {
         Board board = new Board();
+        board.move(board.getSpot(2, 1), board.getSpot(2, 3));
         System.out.println(board.toString());
     }
 }

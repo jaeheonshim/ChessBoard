@@ -25,4 +25,13 @@ public class Spot {
 	 public int getY () {
 		  return y;
 	 }
+
+	@Override
+	public String toString() {
+	 	if(getPiece() != null) {
+			return getPiece().toString();
+		} else {
+	 		return null;
+		}
+	}
 }
