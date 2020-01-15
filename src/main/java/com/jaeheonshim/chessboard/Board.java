@@ -17,6 +17,9 @@ public class Board {
         board[1][6] = new Spot(6, 1, new Pawn(true));
         board[1][7] = new Spot(7, 1, new Pawn(true));
 
+        board[0][0] = new Spot(0, 0, new Rook(true));
+        board[0][7] = new Spot(7, 0, new Rook(true));
+
         board[6][0] = new Spot(0, 6, new Pawn(false));
         board[6][1] = new Spot(1, 6, new Pawn(false));
         board[6][2] = new Spot(2, 6, new Pawn(false));
@@ -25,6 +28,9 @@ public class Board {
         board[6][5] = new Spot(5, 6, new Pawn(false));
         board[6][6] = new Spot(6, 6, new Pawn(false));
         board[6][7] = new Spot(7, 6, new Pawn(false));
+
+        board[6][0] = new Spot(0, 6, new Rook(false));
+        board[6][7] = new Spot(7, 6, new Rook(false));
 
         for (int i = 2; i < 6; i++) {
             for (int j = 0; j < 8; j++) {
