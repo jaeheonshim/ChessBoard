@@ -1,5 +1,7 @@
 package com.jaeheonshim.chessboard;
 
+import java.util.Arrays;
+
 public class Board {
     private Spot[][] board = new Spot[8][8];
 
@@ -54,5 +56,27 @@ public class Board {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder(64);
+        for(Spot[] row : board) {
+            for(Spot spot : row) {
+                if(spot != null) {
+                    stringBuilder.append(spot.toString());
+                } else {
+                    stringBuilder.append(" ");
+                }
+            }
+            stringBuilder.append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public static void main(String[] args) {
+        Board board = new Board();
+        System.out.println(board.toString());
     }
 }

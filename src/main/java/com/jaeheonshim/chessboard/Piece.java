@@ -26,4 +26,7 @@ public abstract class Piece {
 	public boolean isMoved () {
 		  return moved;
 	 }
+
+	@Override
+	public abstract String toString();
 }
