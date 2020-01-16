@@ -49,4 +49,23 @@ public class RookTests {
 
         Assert.assertFalse("A rook should not jump over pieces", testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 5)));
     }
+
+    @Test
+    public void rookShouldKillOnLanding() {
+        Board testBoard = new Board();
+        Spot[][] newBoard = new Spot[8][8];
+        for(int i = 0; i < newBoard.length; i++) {
+            for(int j = 0; j < newBoard.length; j++) {
+                newBoard[i][j] = new Spot(j, i, null);
+            }
+        }
+
+        newBoard[0][0] = new Spot(0, 0, new Rook(true));
+        newBoard[3][0] = new Spot(0, 3, new Rook(false));
+
+        testBoard.setBoard(newBoard);
+
+        Assert.assertTrue("Rook should land on pieces of opposite color", testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 3)));
+        Assert.assertTrue("Rook should kill pieces of opposite color", testBoard.getSpot(0, 3).getPiece().isWhite());
+    }
 }
