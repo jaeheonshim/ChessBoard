@@ -1,5 +1,7 @@
 package com.jaeheonshim.chessboard;
 
+import com.jaeheonshim.chessboard.piece.Piece;
+
 public class Spot {
 	 private Piece piece;
 	 private int x, y;

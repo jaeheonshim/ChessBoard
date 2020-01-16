@@ -1,4 +1,8 @@
-package com.jaeheonshim.chessboard;
+package com.jaeheonshim.chessboard.piece;
+
+import com.jaeheonshim.chessboard.Board;
+import com.jaeheonshim.chessboard.Spot;
+import com.jaeheonshim.chessboard.piece.Piece;
 
 public class Pawn extends Piece {
     public Pawn(boolean white) {

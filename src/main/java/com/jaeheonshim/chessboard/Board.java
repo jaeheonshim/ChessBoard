@@ -1,6 +1,7 @@
 package com.jaeheonshim.chessboard;
 
-import java.util.Arrays;
+import com.jaeheonshim.chessboard.piece.Pawn;
+import com.jaeheonshim.chessboard.piece.Rook;
 
 public class Board {
     private Spot[][] board = new Spot[8][8];

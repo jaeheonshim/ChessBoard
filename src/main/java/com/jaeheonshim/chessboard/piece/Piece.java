@@ -1,4 +1,7 @@
-package com.jaeheonshim.chessboard;
+package com.jaeheonshim.chessboard.piece;
+
+import com.jaeheonshim.chessboard.Board;
+import com.jaeheonshim.chessboard.Spot;
 
 public abstract class Piece {
 	 private boolean killed = false;

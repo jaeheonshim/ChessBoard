@@ -1,10 +1,8 @@
 import com.jaeheonshim.chessboard.Board;
-import com.jaeheonshim.chessboard.Rook;
+import com.jaeheonshim.chessboard.piece.Rook;
 import com.jaeheonshim.chessboard.Spot;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 public class RookTests {
     @Test
@@ -12,7 +10,25 @@ public class RookTests {
         Board testBoard = new Board();
         testBoard.getSpot(0, 1).setPiece(null);
 
-        Assert.assertTrue("Rook should move", testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 5)));
+        Assert.assertTrue("Rook should move vertically", testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 5)));
+    }
+
+    @Test
+    public void rookShouldMoveHorizontally() {
+        Board testBoard = new Board();
+        testBoard.getSpot(0, 1).setPiece(null);
+
+        testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 4));
+        Assert.assertTrue("Rook should move horizontally", testBoard.move(testBoard.getSpot(0, 4), testBoard.getSpot(5, 4)));
+    }
+
+    @Test
+    public void rookShouldNotMoveDiagonally() {
+        Board testBoard = new Board();
+        testBoard.getSpot(0, 1).setPiece(null);
+
+        testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 4));
+        Assert.assertTrue("Rook should not move diagonally", testBoard.move(testBoard.getSpot(0, 4), testBoard.getSpot(5, 6)));
     }
 
     @Test
