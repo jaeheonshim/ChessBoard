@@ -12,7 +12,7 @@ public class Knight extends Piece {
 	 }
 
 	 @Override public boolean canMove (Board board, Spot start, Spot end) {
-	 	 if(start.getX() > 8 || start.getX() < 0 || start.getY() > 8 || start.getY() < 0) {
+	 	 if(end.getX() > 8 || end.getX() < 0 || end.getY() > 8 || end.getY() < 0) {
 	 	 	 return false;
 		 }
 

@@ -51,7 +51,11 @@ public class Board {
     }
 
     public Spot getSpot(int x, int y) {
-        return board[y][x];
+        try {
+             return board[y][x];
+        } catch(ArrayIndexOutOfBoundsException e) {
+            throw new RuntimeException("Spot out of bounds", e);
+        }
     }
 
     public void setBoard(Spot[][] board) {

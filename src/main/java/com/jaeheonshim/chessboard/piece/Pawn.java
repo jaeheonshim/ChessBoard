@@ -2,7 +2,6 @@ package com.jaeheonshim.chessboard.piece;
 
 import com.jaeheonshim.chessboard.Board;
 import com.jaeheonshim.chessboard.Spot;
-import com.jaeheonshim.chessboard.piece.Piece;
 
 public class Pawn extends Piece {
     public Pawn(boolean white) {
@@ -11,6 +10,10 @@ public class Pawn extends Piece {
 
     @Override
     public boolean canMove(Board board, Spot start, Spot end) {
+        if(end.getX() > 8 || end.getX() < 0 || end.getY() > 8 || end.getY() < 0) {
+            return false;
+        }
+
         if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
             //Can't kill or move over piece of same color
             return false;
@@ -23,15 +26,13 @@ public class Pawn extends Piece {
         if (!isMoved() && start.getX() == end.getX() && Math.abs(end.getY() - start.getY()) <= 2) {
             if(end.getY() > start.getY() && isWhite()) {
                 return true;
-            } else if(end.getY() < start.getY() && !isWhite()) {
-                return true;
-            }
+            } else
+                return end.getY() < start.getY() && !isWhite();
         } else if (start.getX() == end.getX() && Math.abs(start.getY() - end.getY()) < 2) {
             if(end.getY() > start.getY() && isWhite()) {
                 return true;
-            } else if(end.getY() < start.getY() && !isWhite()) {
-                return true;
-            }
+            } else
+                return end.getY() < start.getY() && !isWhite();
         } else if (end.getX() == start.getX() - 1 || end.getX() == start.getX() + 1) {
             return end.getY() == start.getY() + 1;
         }
