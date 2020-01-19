@@ -32,4 +32,15 @@ public class KnightTests {
 
 		  Assert.assertFalse("Knight should not land on a piece of the same color", testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(0, 2)));
 	 }
+
+	 @Test
+	 public void knightShouldKillOnLanding() {
+		  Board testBoard = new Board();
+
+		  testBoard.getBoard()[2][0] = new Spot(0, 2, new Knight(false));
+
+		  Assert.assertTrue("Knight should land on a piece of the opposite color", testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(0, 2)));
+
+		  Assert.assertTrue("Knight should kill piece on landing", testBoard.getSpot(0, 2).getPiece().isWhite());
+	 }
 }
