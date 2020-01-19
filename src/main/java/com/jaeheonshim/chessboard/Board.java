@@ -1,5 +1,6 @@
 package com.jaeheonshim.chessboard;
 
+import com.jaeheonshim.chessboard.piece.Bishop;
 import com.jaeheonshim.chessboard.piece.Knight;
 import com.jaeheonshim.chessboard.piece.Pawn;
 import com.jaeheonshim.chessboard.piece.Rook;
@@ -48,6 +49,9 @@ public class Board {
 
         board[pieceRow][1] = new Spot(1, pieceRow, new Knight(white));
         board[pieceRow][6] = new Spot(6, pieceRow, new Knight(white));
+
+        board[pieceRow][2] = new Spot(1, pieceRow, new Bishop(white));
+        board[pieceRow][5] = new Spot(6, pieceRow, new Bishop(white));
     }
 
     public Spot getSpot(int x, int y) {
@@ -100,7 +104,6 @@ public class Board {
 
     public static void main(String[] args) {
         Board board = new Board();
-        board.move(board.getSpot(2, 1), board.getSpot(2, 3));
         System.out.println(board.toString());
     }
 }
