@@ -20,8 +20,8 @@ public class Bishop extends Piece {
 				int lowerY = Math.min(start.getY(), end.getY());
 				int upperY = Math.max(start.getY(), end.getY());
 
-				int xIndex = lowerX;
-				int yIndex = lowerY;
+				int xIndex = lowerX + 1;
+				int yIndex = lowerY + 1;
 
 				while (xIndex < upperX && yIndex < upperY) {
 					 if (board.getSpot(xIndex, yIndex).getPiece() != null) {
