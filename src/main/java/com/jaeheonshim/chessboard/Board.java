@@ -94,6 +94,10 @@ public class Board {
         return stringBuilder.toString();
     }
 
+    public Spot[][] getBoard () {
+        return board;
+    }
+
     public static void main(String[] args) {
         Board board = new Board();
         board.move(board.getSpot(2, 1), board.getSpot(2, 3));
