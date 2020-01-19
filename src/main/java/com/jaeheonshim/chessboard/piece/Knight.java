@@ -16,7 +16,11 @@ public class Knight extends Piece {
 	 	 	 return false;
 		 }
 
-	 	 for(int i = 0; i <= 8; i++) {
+	 	 if(end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
+	 	 	 return false;
+		 }
+
+	 	 for(int i = 0; i < 8; i++) {
 	 	 	 if(start.getX() + movesX[i] == end.getX() && start.getY() + movesY[i] == end.getY()) {
 	 	 	 	 return true;
 			 }
