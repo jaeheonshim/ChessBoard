@@ -29,8 +29,10 @@ public class PawnTests {
 	 @Test public void pawnShouldKillDiagonally () {
 		  Board testBoard = new Board();
 		  Spot[][] newBoard = new Spot[8][8];
-		  for (int i = 0; i < newBoard.length; i++) {
-				Arrays.fill(newBoard[i], null);
+		  for(int i = 0; i < newBoard.length; i++) {
+				for(int j = 0; j < newBoard.length; j++) {
+					 newBoard[i][j] = new Spot(j, i, null);
+				}
 		  }
 		  newBoard[1][0] = new Spot(0, 1, new Pawn(true));
 		  newBoard[0][1] = new Spot(1, 0, new Pawn(false));
@@ -45,8 +47,10 @@ public class PawnTests {
 	 @Test public void pawnShouldNotKillForwards () {
 		  Board testBoard = new Board();
 		  Spot[][] newBoard = new Spot[8][8];
-		  for (int i = 0; i < newBoard.length; i++) {
-				Arrays.fill(newBoard[i], null);
+		  for(int i = 0; i < newBoard.length; i++) {
+				for(int j = 0; j < newBoard.length; j++) {
+					 newBoard[i][j] = new Spot(j, i, null);
+				}
 		  }
 		  newBoard[1][1] = new Spot(1, 1, new Pawn(true));
 		  newBoard[0][1] = new Spot(1, 0, new Pawn(false));
