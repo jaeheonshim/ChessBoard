@@ -26,6 +26,10 @@ public class Knight extends Piece {
 	 }
 
 	 public String toString () {
-		  return null;
+		  if(isWhite()) {
+		  	 return "K";
+		  } else {
+		  	 return "k";
+		  }
 	 }
 }

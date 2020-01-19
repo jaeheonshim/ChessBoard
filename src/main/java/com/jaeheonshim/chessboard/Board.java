@@ -1,5 +1,6 @@
 package com.jaeheonshim.chessboard;
 
+import com.jaeheonshim.chessboard.piece.Knight;
 import com.jaeheonshim.chessboard.piece.Pawn;
 import com.jaeheonshim.chessboard.piece.Rook;
 
@@ -20,35 +21,33 @@ public class Board {
 
         setBoard(blankBoard);
 
-        board[1][0] = new Spot(0, 1, new Pawn(true));
-        board[1][1] = new Spot(1, 1, new Pawn(true));
-        board[1][2] = new Spot(2, 1, new Pawn(true));
-        board[1][3] = new Spot(3, 1, new Pawn(true));
-        board[1][4] = new Spot(4, 1, new Pawn(true));
-        board[1][5] = new Spot(5, 1, new Pawn(true));
-        board[1][6] = new Spot(6, 1, new Pawn(true));
-        board[1][7] = new Spot(7, 1, new Pawn(true));
-
-        board[0][0] = new Spot(0, 0, new Rook(true));
-        board[0][7] = new Spot(7, 0, new Rook(true));
-
-        board[6][0] = new Spot(0, 6, new Pawn(false));
-        board[6][1] = new Spot(1, 6, new Pawn(false));
-        board[6][2] = new Spot(2, 6, new Pawn(false));
-        board[6][3] = new Spot(3, 6, new Pawn(false));
-        board[6][4] = new Spot(4, 6, new Pawn(false));
-        board[6][5] = new Spot(5, 6, new Pawn(false));
-        board[6][6] = new Spot(6, 6, new Pawn(false));
-        board[6][7] = new Spot(7, 6, new Pawn(false));
-
-        board[7][0] = new Spot(0, 6, new Rook(false));
-        board[7][7] = new Spot(7, 6, new Rook(false));
+        setBoard(true);
+        setBoard(false);
 
         for (int i = 2; i < 6; i++) {
             for (int j = 0; j < 8; j++) {
                 board[i][j] = new Spot(j, i, null);
             }
         }
+    }
+
+    private void setBoard(boolean white) {
+        int pawnRow = white ? 1 : 6;
+        int pieceRow = white ? 0: 7;
+        board[pawnRow][0] = new Spot(0, pawnRow, new Pawn(white));
+        board[pawnRow][1] = new Spot(1, pawnRow, new Pawn(white));
+        board[pawnRow][2] = new Spot(2, pawnRow, new Pawn(white));
+        board[pawnRow][3] = new Spot(3, pawnRow, new Pawn(white));
+        board[pawnRow][4] = new Spot(4, pawnRow, new Pawn(white));
+        board[pawnRow][5] = new Spot(5, pawnRow, new Pawn(white));
+        board[pawnRow][6] = new Spot(6, pawnRow, new Pawn(white));
+        board[pawnRow][7] = new Spot(7, pawnRow, new Pawn(white));
+
+        board[pieceRow][0] = new Spot(0,  pieceRow, new Rook(white));
+        board[pieceRow][7] = new Spot(7,  pieceRow, new Rook(white));
+
+        board[pieceRow][1] = new Spot(1, pieceRow, new Knight(white));
+        board[pieceRow][6] = new Spot(6, pieceRow, new Knight(white));
     }
 
     public Spot getSpot(int x, int y) {
