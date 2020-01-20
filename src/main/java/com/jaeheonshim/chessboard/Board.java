@@ -35,14 +35,10 @@ public class Board {
     private void setBoard(boolean white) {
         int pawnRow = white ? 1 : 6;
         int pieceRow = white ? 0: 7;
-        board[pawnRow][0] = new Spot(0, pawnRow, new Pawn(white));
-        board[pawnRow][1] = new Spot(1, pawnRow, new Pawn(white));
-        board[pawnRow][2] = new Spot(2, pawnRow, new Pawn(white));
-        board[pawnRow][3] = new Spot(3, pawnRow, new Pawn(white));
-        board[pawnRow][4] = new Spot(4, pawnRow, new Pawn(white));
-        board[pawnRow][5] = new Spot(5, pawnRow, new Pawn(white));
-        board[pawnRow][6] = new Spot(6, pawnRow, new Pawn(white));
-        board[pawnRow][7] = new Spot(7, pawnRow, new Pawn(white));
+
+        for(int i = 0; i < 8; i++) {
+            board[pawnRow][i] = new Spot(i, pawnRow, new Pawn(white));
+        }
 
         board[pieceRow][0] = new Spot(0,  pieceRow, new Rook(white));
         board[pieceRow][7] = new Spot(7,  pieceRow, new Rook(white));
