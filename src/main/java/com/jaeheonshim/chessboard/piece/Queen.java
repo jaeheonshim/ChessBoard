@@ -14,14 +14,14 @@ public class Queen extends Piece {
 		  }
 
 		  if (start.getX() == end.getX()) {
-				for (int i = Math.min(start.getY(), end.getY()); i < Math.max(start.getY(), end.getY()); i++) {
+				for (int i = Math.min(start.getY(), end.getY()) + 1; i < Math.max(start.getY(), end.getY()); i++) {
 					 if (board.getSpot(start.getX(), i).getPiece() != null) {
 						  return false;
 					 }
 				}
 				return true;
 		  } else if (start.getY() == end.getY()) {
-				for (int i = Math.min(start.getX(), end.getX()); i < Math.max(start.getX(), end.getX()); i++) {
+				for (int i = Math.min(start.getX(), end.getX()) + 1; i < Math.max(start.getX(), end.getX()); i++) {
 					 if (board.getSpot(i, start.getY()).getPiece() != null) {
 						  return false;
 					 }
