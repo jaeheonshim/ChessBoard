@@ -22,4 +22,11 @@ public class KingTests {
 
         Assert.assertFalse("King should not move into dangerous position", testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot((0), 1)));
     }
+
+    @Test
+    public void kingShouldNotMoveOntoPieceOfSameColor() {
+        Board testBoard = new Board();
+
+        Assert.assertFalse("King should not move onto a piece of the same color", testBoard.move(testBoard.getSpot(4, 0), testBoard.getSpot(4, 1)));
+    }
 }

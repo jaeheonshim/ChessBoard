@@ -47,6 +47,7 @@ public class Board {
         board[pieceRow][5] = new Spot(5, pieceRow, new Bishop(white));
 
         board[pieceRow][3] = new Spot(3, pieceRow, new Queen(white));
+        board[pieceRow][4] = new Spot(4, pieceRow, new King(white));
     }
 
     public Spot getSpot(int x, int y) {
