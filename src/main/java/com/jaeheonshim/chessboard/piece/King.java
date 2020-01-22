@@ -26,10 +26,18 @@ public class King extends Piece {
         end.setPiece(endTemp);
 
         if (start.getX() == end.getX()) {
-            return Math.abs(start.getY() - end.getY()) <= 1;
+            if(Math.abs(start.getY() - end.getY()) > 1) {
+                return false;
+            }
         } else if (start.getY() == end.getY()) {
-            return Math.abs(start.getX() - end.getX()) <= 1;
-        } else return Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY()) <= 2;
+           if(Math.abs(start.getX() - end.getX()) < 1) {
+               return false;
+           }
+        } else if(Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY()) > 2) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
