@@ -1,9 +1,6 @@
 package com.jaeheonshim.chessboard;
 
-import com.jaeheonshim.chessboard.piece.Bishop;
-import com.jaeheonshim.chessboard.piece.Knight;
-import com.jaeheonshim.chessboard.piece.Pawn;
-import com.jaeheonshim.chessboard.piece.Rook;
+import com.jaeheonshim.chessboard.piece.*;
 
 public class Board {
     private Spot[][] board = new Spot[8][8];
@@ -46,8 +43,10 @@ public class Board {
         board[pieceRow][1] = new Spot(1, pieceRow, new Knight(white));
         board[pieceRow][6] = new Spot(6, pieceRow, new Knight(white));
 
-        board[pieceRow][2] = new Spot(1, pieceRow, new Bishop(white));
-        board[pieceRow][5] = new Spot(6, pieceRow, new Bishop(white));
+        board[pieceRow][2] = new Spot(2, pieceRow, new Bishop(white));
+        board[pieceRow][5] = new Spot(5, pieceRow, new Bishop(white));
+
+        board[pieceRow][3] = new Spot(3, pieceRow, new Queen(white));
     }
 
     public Spot getSpot(int x, int y) {
