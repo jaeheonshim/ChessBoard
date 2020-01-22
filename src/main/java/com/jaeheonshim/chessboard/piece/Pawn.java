@@ -34,7 +34,7 @@ public class Pawn extends Piece {
             } else
                 return end.getY() < start.getY() && !isWhite();
         } else if (end.getX() == start.getX() - 1 || end.getX() == start.getX() + 1) {
-            return end.getY() == start.getY() + 1;
+            return isWhite() ? end.getY() == start.getY() + 1 : end.getY() == start.getY() - 1;
         }
 
         return false;
