@@ -2,6 +2,7 @@ import com.jaeheonshim.chessboard.Board;
 import com.jaeheonshim.chessboard.Spot;
 import com.jaeheonshim.chessboard.piece.King;
 import com.jaeheonshim.chessboard.piece.Pawn;
+import com.jaeheonshim.chessboard.piece.Rook;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -72,7 +73,15 @@ public class KingTests {
         Assert.assertTrue("King should move one spot diagonally", testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(1, 1)));
     }
 
-    public Board initBoard() {
+    @Test
+    public void kingShouldBeInCheckIfUnderThreat() {
+        Board testBoard = initBoard();
+
+        testBoard.getBoard()[1][0].setPiece(new Rook(false));
+        Assert.assertTrue(testBoard.getKing(true).inCheck(testBoard));
+    }
+
+    private Board initBoard() {
         Board testBoard = new Board();
         Spot[][] newBoard = new Spot[8][8];
         for (int i = 0; i < newBoard.length; i++) {

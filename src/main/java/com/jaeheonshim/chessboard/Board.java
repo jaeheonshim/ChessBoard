@@ -58,6 +58,18 @@ public class Board {
         }
     }
 
+    public King getKing(boolean white) {
+        for(Spot[] spots : board) {
+            for(Spot spot : spots){
+                 if(spot.getPiece() instanceof King && spot.getPiece().isWhite() == white) {
+                     return (King) spot.getPiece();
+                 }
+            }
+        }
+
+        return null;
+    }
+
     public void setBoard(Spot[][] board) {
         this.board = board;
     }
@@ -75,6 +87,10 @@ public class Board {
         } else {
             return false;
         }
+    }
+
+    public boolean canMove(Spot begin, Spot end) {
+        return begin.getPiece().canMove(this, begin, end);
     }
 
     @Override

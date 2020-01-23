@@ -34,14 +34,14 @@ public class PawnTests {
 					 newBoard[i][j] = new Spot(j, i, null);
 				}
 		  }
-		  newBoard[1][0] = new Spot(0, 1, new Pawn(true));
-		  newBoard[0][1] = new Spot(1, 0, new Pawn(false));
+		  newBoard[1][0] = new Spot(0, 1, new Pawn(false));
+		  newBoard[0][1] = new Spot(1, 0, new Pawn(true));
 
 		  testBoard.setBoard(newBoard);
 
 		  Assert.assertTrue("Pawn should kill piece of opposite color diagonally",
 			  testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(0, 1)));
-		  Assert.assertFalse(testBoard.getSpot(0, 1).getPiece().isWhite());
+		 Assert.assertTrue(testBoard.getSpot(0, 1).getPiece().isWhite());
 	 }
 
 	 @Test public void pawnShouldNotKillForwards () {

@@ -30,6 +30,18 @@ public abstract class Piece {
 		  return moved;
 	 }
 
+	 public Spot getSpot(Board board) {
+	 	for(Spot[] spots : board.getBoard()) {
+	 		for(Spot spot : spots) {
+	 			if(spot.getPiece() == this) {
+	 				return spot;
+				}
+			}
+		}
+
+	 	return null;
+	 }
+
 	@Override
 	public abstract String toString();
 }

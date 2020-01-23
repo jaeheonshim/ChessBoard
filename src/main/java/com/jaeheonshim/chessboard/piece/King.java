@@ -30,7 +30,7 @@ public class King extends Piece {
                 return false;
             }
         } else if (start.getY() == end.getY()) {
-           if(Math.abs(start.getX() - end.getX()) < 1) {
+           if(Math.abs(start.getX() - end.getX()) > 1) {
                return false;
            }
         } else if(Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY()) > 2) {
@@ -38,6 +38,18 @@ public class King extends Piece {
         }
 
         return true;
+    }
+
+    public boolean inCheck(Board board) {
+        for (Spot[] spots : board.getBoard()) {
+            for (Spot spot : spots) {
+                if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece() != this && spot.getPiece().canMove(board, spot, this.getSpot(board))) {
+                    return true; //if any piece on the board can kill the king after it has made its move, you will be unable to make the move.
+                }
+            }
+        }
+
+        return false;
     }
 
     @Override
