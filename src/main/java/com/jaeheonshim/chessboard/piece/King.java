@@ -43,7 +43,7 @@ public class King extends Piece {
     public boolean inCheck(Board board) {
         for (Spot[] spots : board.getBoard()) {
             for (Spot spot : spots) {
-                if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece() != this && spot.getPiece().canMove(board, spot, this.getSpot(board))) {
+                if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece() != this && spot.getPiece().isWhite() != isWhite() && spot.getPiece().canMove(board, spot, this.getSpot(board))) {
                     return true; //if any piece on the board can kill the king after it has made its move, you will be unable to make the move.
                 }
             }
