@@ -20,8 +20,8 @@ public class Rook extends Piece {
         if(start.getX() == end.getX()) {
             //moving vertically
             if(start.getY() > end.getY()) {
-                for(int i = end.getY() + 1; i < start.getY(); i--) {
-                    if(board.getSpot(start.getX(), i) != null) {
+                for(int i = end.getY() + 1; i < start.getY(); i++) {
+                    if(board.getSpot(start.getX(), i).getPiece() != null) {
                         //if there are pieces in the way
                         return false;
                     }
