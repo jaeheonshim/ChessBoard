@@ -16,6 +16,9 @@ public class King extends Piece {
 
         Piece endTemp = end.getPiece();
         end.setPiece(this);
+        Spot tempSpot = this.getSpot(board);
+        this.getSpot(board).setPiece(null);
+        System.out.println(board);
         for (Spot[] spots : board.getBoard()) {
             for (Spot spot : spots) {
                 if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece().canMove(board, spot, end)) {
@@ -24,15 +27,12 @@ public class King extends Piece {
             }
         }
         end.setPiece(endTemp);
+        tempSpot.setPiece(this);
 
         if (start.getX() == end.getX()) {
-            if(Math.abs(start.getY() - end.getY()) > 1) {
-                return false;
-            }
+            return Math.abs(start.getY() - end.getY()) <= 1;
         } else if (start.getY() == end.getY()) {
-           if(Math.abs(start.getX() - end.getX()) > 1) {
-               return false;
-           }
+            return Math.abs(start.getX() - end.getX()) <= 1;
         } else if(Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY()) > 2) {
             return false;
         }
