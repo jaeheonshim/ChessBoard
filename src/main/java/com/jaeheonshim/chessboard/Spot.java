@@ -28,6 +28,16 @@ public class Spot {
 		  return y;
 	 }
 
+	 public Square getSquare() {
+	 	for(Square square : Square.values()) {
+	 		if(square.getX() == this.x && square.getY() == this.y) {
+	 			return square;
+			}
+		}
+
+	 	return null;
+	 }
+
 	@Override
 	public String toString() {
 	 	if(getPiece() != null) {

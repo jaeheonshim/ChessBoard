@@ -58,6 +58,10 @@ public class Board {
         }
     }
 
+    public Spot getSpot(Square square) {
+        return board[square.getY()][square.getX()];
+    }
+
     public King getKing(boolean white) {
         for(Spot[] spots : board) {
             for(Spot spot : spots){
@@ -120,10 +124,5 @@ public class Board {
 
     public Spot[][] getBoard () {
         return board;
-    }
-
-    public static void main(String[] args) {
-        Board board = new Board();
-        System.out.println(board.toString());
     }
 }
