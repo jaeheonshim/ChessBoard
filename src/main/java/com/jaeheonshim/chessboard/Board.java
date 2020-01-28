@@ -89,8 +89,16 @@ public class Board {
         }
     }
 
+    public boolean move(Square begin, Square end) {
+        return this.move(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
+    }
+
     public boolean canMove(Spot begin, Spot end) {
         return begin.getPiece().canMove(this, begin, end);
+    }
+
+    public boolean canMove(Square begin, Square end) {
+        return this.canMove(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
     }
 
     @Override
