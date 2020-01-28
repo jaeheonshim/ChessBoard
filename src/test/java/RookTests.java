@@ -28,7 +28,7 @@ public class RookTests {
         testBoard.getSpot(0, 1).setPiece(null);
 
         testBoard.move(testBoard.getSpot(0, 0), testBoard.getSpot(0, 4));
-        Assert.assertTrue("Rook should not move diagonally", testBoard.move(testBoard.getSpot(0, 4), testBoard.getSpot(5, 6)));
+        Assert.assertFalse("Rook should not move diagonally", testBoard.move(testBoard.getSpot(0, 4), testBoard.getSpot(5, 6)));
     }
 
     @Test
