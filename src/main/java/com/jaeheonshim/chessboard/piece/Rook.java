@@ -16,6 +16,8 @@ public class Rook extends Piece {
                 // can't kill piece of same color
                 return false;
             }
+        } else if (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
+            return false;
         }
         if(start.getX() == end.getX()) {
             //moving vertically

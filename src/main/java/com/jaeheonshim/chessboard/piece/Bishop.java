@@ -12,7 +12,7 @@ public class Bishop extends Piece {
     public boolean canMove(Board board, Spot start, Spot end) {
         if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
             return false;
-        } else if (board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
+        } else if (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
             return false;
         }
 
