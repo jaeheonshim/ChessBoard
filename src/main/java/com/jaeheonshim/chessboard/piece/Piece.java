@@ -7,6 +7,7 @@ public abstract class Piece {
     private boolean killed = false;
     private boolean moved = false;
     private boolean white;
+    protected boolean checkKingInCheck = true;
 
     public Piece(boolean white) {
         this.white = white;
@@ -14,6 +15,11 @@ public abstract class Piece {
 
     public boolean isWhite() {
         return white;
+    }
+
+    public boolean canMove(Board board, Spot start, Spot end, boolean checkKingInCheck) {
+        this.checkKingInCheck = checkKingInCheck;
+        return canMove(board, start, end);
     }
 
     public abstract boolean canMove(Board board, Spot start, Spot end);

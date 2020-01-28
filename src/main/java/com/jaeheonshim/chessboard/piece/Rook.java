@@ -51,6 +51,8 @@ public class Rook extends Piece {
                     }
                 }
             }
+        } else if(start.getY() != end.getY() || start.getX() != end.getX()) {
+            return false;
         }
 
         return true;
