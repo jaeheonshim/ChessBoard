@@ -2,6 +2,7 @@ package com.jaeheonshim.chessboard.piece;
 
 import com.jaeheonshim.chessboard.Board;
 import com.jaeheonshim.chessboard.Spot;
+import com.jaeheonshim.chessboard.Square;
 
 public abstract class Piece {
     private boolean killed = false;
@@ -26,6 +27,10 @@ public abstract class Piece {
 
     public boolean canMove(Board board, Spot end) {
         return canMove(board, getSpot(board), end);
+    }
+
+    public boolean canMove(Board board, Square start, Square end) {
+        return canMove(board, board.getSpot(start), board.getSpot(end));
     }
 
     public void setMoved() {
