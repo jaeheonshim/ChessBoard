@@ -34,11 +34,25 @@ Result:
         R
          P 
 
-### Check if a move on the ChessBoard is valid
-    Board board = new Board();  
+### Check if a move on the board is valid
     Board board = new Board();
     System.out.println(board.canMove(Square.E2, Square.E4));
 Result:
 
     true
 
+### Execute a move on the board if it is valid
+    Board board = new Board();
+    System.out.println(board.move(Square.E2, Square.E4));
+    System.out.println(board.toString());
+Result:
+
+    true
+    rnbqkbnr
+    pppppppp
+        
+        
+        P   
+        
+    PPPP PPP
+    RNBQKBNR
