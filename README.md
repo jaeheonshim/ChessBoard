@@ -24,7 +24,6 @@ Result:
     RNBQKBNR
 
 ### Create a new chessboard with custom locations of pieces
-
     Board board = new Board();  
     board.clear();  
     board.getSpot(4, 2).setPiece(new Pawn(true));  
@@ -34,4 +33,12 @@ Result:
 
         R
          P 
+
+### Check if a move on the ChessBoard is valid
+    Board board = new Board();  
+    Board board = new Board();
+    System.out.println(board.canMove(Square.E2, Square.E4));
+Result:
+
+    true
 
