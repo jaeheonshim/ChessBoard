@@ -2,6 +2,8 @@ package com.jaeheonshim.chessboard;
 
 import com.jaeheonshim.chessboard.piece.*;
 
+import java.util.Arrays;
+
 public class Board {
     private Spot[][] board = new Spot[8][8];
 
@@ -120,6 +122,10 @@ public class Board {
         }
 
         return stringBuilder.toString();
+    }
+
+    public void clear() {
+        Arrays.asList(board).forEach(m -> Arrays.asList(m).forEach(e -> e.setPiece(null)));
     }
 
     public Spot[][] getBoard () {
