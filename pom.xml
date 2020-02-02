@@ -7,6 +7,19 @@
     <groupId>com.jaeheonshim</groupId>
     <artifactId>chessboard</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ChessBoard</name>
+    <description>A Java library for chess legal move processing</description>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://spdx.org/licenses/MIT.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -16,5 +29,12 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub jaeheonshim Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/jaeheonshim/ChessBoard</url>
+        </repository>
+    </distributionManagement>
 
 </project>
