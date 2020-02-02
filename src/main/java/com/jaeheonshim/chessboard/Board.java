@@ -2,6 +2,8 @@ package com.jaeheonshim.chessboard;
 
 import com.jaeheonshim.chessboard.piece.*;
 
+import java.util.Arrays;
+
 public class Board {
     private Spot[][] board = new Spot[8][8];
 
@@ -9,6 +11,9 @@ public class Board {
         resetBoard();
     }
 
+    /**
+     * Resets the board to the state of a classic chess game
+     */
     public void resetBoard() {
         Spot[][] blankBoard = new Spot[8][8];
         for (int i = 0; i < blankBoard.length; i++) {
@@ -29,6 +34,10 @@ public class Board {
         }
     }
 
+    /**
+     * Helper method for setting the board to a classic chess state
+     * @param white Whether you are setting white pieces
+     */
     private void setBoard(boolean white) {
         int pawnRow = white ? 1 : 6;
         int pieceRow = white ? 0: 7;
@@ -50,6 +59,13 @@ public class Board {
         board[pieceRow][4] = new Spot(4, pieceRow, new King(white));
     }
 
+    /**
+     * Returns a Spot on the board based on given coordinates
+     * (0, 0) is defined as the bottom left corner
+     * @param x x coordinate of spot
+     * @param y y coordinate of spot
+     * @return Spot at x and y coordinate of board.
+     */
     public Spot getSpot(int x, int y) {
         try {
              return board[y][x];
@@ -58,10 +74,20 @@ public class Board {
         }
     }
 
+    /**
+     * Returns a spot given a Square enumeration type
+     * @param square Square to return
+     * @return Spot retrieved from board using square parameter
+     */
     public Spot getSpot(Square square) {
         return board[square.getY()][square.getX()];
     }
 
+    /**
+     * Returns the king from the board with the specified color. Returns null if no king is available.
+     * @param white Whether to return the white king
+     * @return Piece King from the Board.
+     */
     public King getKing(boolean white) {
         for(Spot[] spots : board) {
             for(Spot spot : spots){
@@ -74,10 +100,20 @@ public class Board {
         return null;
     }
 
+    /**
+     * Sets the current state of the board from a two-dimensional array of type Spot.
+     * @param board Two-dimensional array of spot with pieces.
+     */
     public void setBoard(Spot[][] board) {
         this.board = board;
     }
 
+    /**
+     * Performs a piece move on the current board, if that move is allowed.
+     * @param begin Spot in board of the piece to move
+     * @param end Spot to attempt moving piece to
+     * @return returns true if move is valid and move has been executed, false if move is invalid.
+     */
     public boolean move(Spot begin, Spot end) {
         if (begin.getPiece().canMove(this, begin, end)) {
             if (end.getPiece() != null) {
@@ -93,18 +129,40 @@ public class Board {
         }
     }
 
+    /**
+     * Performs a piece move on the current board, if that move is allowed.
+     * @param begin Square piece to move is located
+     * @param end Square to move piece to
+     * @return returns true if move is valid and move has been executed, false if move is invalid.
+     */
     public boolean move(Square begin, Square end) {
         return this.move(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
     }
 
+    /**
+     * Check if a piece can be moved, without actually making the move.
+     * @param begin Spot containing piece to move
+     * @param end Spot containing destination
+     * @return returns true if move is valid, false if move is invalid.
+     */
     public boolean canMove(Spot begin, Spot end) {
         return begin.getPiece().canMove(this, begin, end);
     }
 
+    /**
+     * Check if a piece can be moved, without actually making the move.
+     * @param begin Square containing piece to move
+     * @param end Square containing destination
+     * @return returns true if move is valid, false if move is invalid.
+     */
     public boolean canMove(Square begin, Square end) {
         return this.canMove(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
     }
 
+    /**
+     * Get a visual string representation of the board in its current state
+     * @return String visualizing the board. White pieces are capitalized and black pieces are lowercase.
+     */
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(64);
@@ -122,6 +180,17 @@ public class Board {
         return stringBuilder.toString();
     }
 
+    /**
+     * Removes all pieces from the board
+     */
+    public void clear() {
+        Arrays.asList(board).forEach(m -> Arrays.asList(m).forEach(e -> e.setPiece(null)));
+    }
+
+    /**
+     * Returns the board as a two-dimensional array of Spots
+     * @return Two dimensional array of type Spot
+     */
     public Spot[][] getBoard () {
         return board;
     }
