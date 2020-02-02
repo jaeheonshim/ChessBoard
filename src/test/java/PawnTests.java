@@ -1,4 +1,5 @@
 import com.jaeheonshim.chessboard.Board;
+import com.jaeheonshim.chessboard.Square;
 import com.jaeheonshim.chessboard.piece.King;
 import com.jaeheonshim.chessboard.piece.Pawn;
 import com.jaeheonshim.chessboard.Spot;
@@ -101,5 +102,13 @@ public class PawnTests {
 
         Assert.assertTrue(testBoard.getKing(true).inCheck(testBoard));
         Assert.assertFalse("Pawn", testBoard.getSpot(3, 3).getPiece().canMove(testBoard, testBoard.getSpot(3, 4)));
+    }
+
+    @Test
+    public void pawnShouldNotMoveDiagonallyIfNotKilling() {
+        Board testBoard = new Board();
+
+        Assert.assertFalse("Pawn should not move diagonally if destination does not have a piece of the opposite color", testBoard.move(
+           Square.E2, Square.F3));
     }
 }
