@@ -2,8 +2,10 @@ package com.jaeheonshim.chessboard;
 
 import com.jaeheonshim.chessboard.piece.Piece;
 
-/*
-Represents a spot within a Board.
+/**
+ * Represents a spot within a Board.
+ *
+ * @author jaeheonshim
  */
 public class Spot {
     private Piece piece;
@@ -15,43 +17,48 @@ public class Spot {
         this.piece = piece;
     }
 
-	/**
-	 * Returns the piece stored in this spot
-	 * @return Piece object stored in spot
-	 */
-	public Piece getPiece() {
+    /**
+     * Returns the piece stored in this spot
+     *
+     * @return Piece object stored in spot
+     */
+    public Piece getPiece() {
         return piece;
     }
 
-	/**
-	 * Sets the piece stored in the spot
-	 * @param piece piece to set field piece to
-	 */
-	public void setPiece(Piece piece) {
+    /**
+     * Sets the piece stored in the spot
+     *
+     * @param piece piece to set field piece to
+     */
+    public void setPiece(Piece piece) {
         this.piece = piece;
     }
 
-	/**
-	 * Returns the x coordinate of the spot where (0, 0) is the lower left corner of the board
-	 * @return the x coordinate
-	 */
-	public int getX() {
+    /**
+     * Returns the x coordinate of the spot where (0, 0) is the lower left corner of the board
+     *
+     * @return the x coordinate
+     */
+    public int getX() {
         return x;
     }
 
-	/**
-	 * Returns the y coordinate of the spot where (0, 0) is the lower left corner of the board
-	 * @return the y coordinate
-	 */
-	public int getY() {
+    /**
+     * Returns the y coordinate of the spot where (0, 0) is the lower left corner of the board
+     *
+     * @return the y coordinate
+     */
+    public int getY() {
         return y;
     }
 
-	/**
-	 * Returns the square enumeration associated with the spot on the board
-	 * @return Square corresponding to position of this spot on the board
-	 */
-	public Square getSquare() {
+    /**
+     * Returns the square enumeration associated with the spot on the board
+     *
+     * @return Square corresponding to position of this spot on the board
+     */
+    public Square getSquare() {
         for (Square square : Square.values()) {
             if (square.getX() == this.x && square.getY() == this.y) {
                 return square;

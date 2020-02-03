@@ -4,6 +4,11 @@ import com.jaeheonshim.chessboard.Board;
 import com.jaeheonshim.chessboard.Spot;
 import com.jaeheonshim.chessboard.Square;
 
+/**
+ * Represents a chess piece.
+ *
+ * @author jaeheonshim
+ */
 public abstract class Piece {
     private boolean killed = false;
     private boolean moved = false;

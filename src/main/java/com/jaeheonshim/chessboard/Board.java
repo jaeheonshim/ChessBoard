@@ -4,6 +4,11 @@ import com.jaeheonshim.chessboard.piece.*;
 
 import java.util.Arrays;
 
+/**
+ * Represents the chessboard and methods for manipulating entities of the board
+ *
+ * @author jaeheonshim
+ */
 public class Board {
     private Spot[][] board = new Spot[8][8];
 

@@ -3,6 +3,8 @@ package com.jaeheonshim.chessboard;
 /**
  * A convenience class containing coordinates on the chessboard as enumerations.
  * In this format, letters denote rows and numbers denote columns. For example, the square C5 would refer to coordinates  2, 4 (starting at 0).
+ *
+ * @author jaeheonshim
  */
 public enum Square {
     A1(0, 0),
