@@ -165,6 +165,14 @@ public class Board {
     }
 
     /**
+     * Checks if either king on the board is in checkmate
+     * @return true if a king is in checkmate, false if king is not in checkmate.
+     */
+    public boolean kingInCheckmate() {
+        return getKing(true).inCheckmate(this) ^ getKing(false).inCheckmate(this);
+    }
+
+    /**
      * Get a visual string representation of the board in its current state
      * @return String visualizing the board. White pieces are capitalized and black pieces are lowercase.
      */
