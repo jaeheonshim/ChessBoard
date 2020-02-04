@@ -15,13 +15,14 @@ public class King extends Piece {
         }
 
         Piece endTemp = end.getPiece();
-        end.setPiece(this);
         Spot tempSpot = this.getSpot(board);
+        end.setPiece(this);
         this.getSpot(board).setPiece(null);
-        System.out.println(board);
         for (Spot[] spots : board.getBoard()) {
             for (Spot spot : spots) {
                 if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece().canMove(board, spot, end)) {
+                    end.setPiece(endTemp);
+                    tempSpot.setPiece(this);
                     return false; //if any piece on the board can kill the king after it has made its move, you will be unable to make the move.
                 }
             }
@@ -50,6 +51,32 @@ public class King extends Piece {
         }
 
         return false;
+    }
+
+    public boolean inCheckmate(Board board) {
+        if(this.inCheck(board)) {
+            for (Spot[] spots : board.getBoard()) {
+                for (Spot spot : spots) {
+                    if (this.canMove(board, spot)) {
+                        Piece tempPiece = spot.getPiece();
+                        Spot tempSpot = getSpot(board);
+
+                        spot.setPiece(this);
+                        getSpot(board).setPiece(null);
+                        if (!this.inCheck(board)) {
+                            spot.setPiece(tempPiece);
+                            tempSpot.setPiece(this);
+                            return false;
+                        }
+                        spot.setPiece(tempPiece);
+                        tempSpot.setPiece(this);
+                    }
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
