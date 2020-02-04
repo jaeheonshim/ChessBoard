@@ -20,7 +20,7 @@ public class King extends Piece {
         this.getSpot(board).setPiece(null);
         for (Spot[] spots : board.getBoard()) {
             for (Spot spot : spots) {
-                if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece().canMove(board, spot, end)) {
+                if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece().isWhite() != isWhite() && spot.getPiece().canMove(board, spot, end)) {
                     end.setPiece(endTemp);
                     tempSpot.setPiece(this);
                     return false; //if any piece on the board can kill the king after it has made its move, you will be unable to make the move.
