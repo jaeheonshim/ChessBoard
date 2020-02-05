@@ -15,6 +15,8 @@ public class Pawn extends Piece {
 				return false;
 		  }
 
+		  checkKingInCheck = true;
+
 		  if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
 				//Can't kill or move over piece of same color
 				return false;

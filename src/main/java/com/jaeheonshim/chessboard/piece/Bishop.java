@@ -16,6 +16,8 @@ public class Bishop extends Piece {
             return false;
         }
 
+        checkKingInCheck = true;
+
         if (Math.abs(start.getX() - end.getX()) == Math.abs(start.getY() - end.getY())) {
             int xMutator;
             int yMutator;

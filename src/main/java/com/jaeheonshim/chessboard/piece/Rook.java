@@ -19,6 +19,9 @@ public class Rook extends Piece {
         } else if (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
             return false;
         }
+
+        checkKingInCheck = true;
+
         if(start.getX() == end.getX()) {
             //moving vertically
             if(start.getY() > end.getY()) {

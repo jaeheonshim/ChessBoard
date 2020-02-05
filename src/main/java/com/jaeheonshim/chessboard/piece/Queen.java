@@ -15,6 +15,8 @@ public class Queen extends Piece {
 			  return false;
 		  }
 
+		  checkKingInCheck = true;
+
 		  if (start.getX() == end.getX()) {
 				for (int i = Math.min(start.getY(), end.getY()) + 1; i < Math.max(start.getY(), end.getY()); i++) {
 					 if (board.getSpot(start.getX(), i).getPiece() != null) {
