@@ -16,6 +16,23 @@ public class Bishop extends Piece {
             return false;
         }
 
+        if (checkKingInCheck) {
+            Spot tempSpot = this.getSpot(board);
+            Piece tempPiece = end.getPiece();
+
+            end.setPiece(this);
+            start.setPiece(null);
+
+            if (board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
+                end.setPiece(tempPiece);
+                tempSpot.setPiece(this);
+                return false;
+            }
+
+            end.setPiece(tempPiece);
+            tempSpot.setPiece(this);
+        }
+
         checkKingInCheck = true;
 
         if (Math.abs(start.getX() - end.getX()) == Math.abs(start.getY() - end.getY())) {
