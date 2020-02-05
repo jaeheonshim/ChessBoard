@@ -120,7 +120,7 @@ public class Board {
      * @return returns true if move is valid and move has been executed, false if move is invalid.
      */
     public boolean move(Spot begin, Spot end) {
-        if (begin.getPiece().canMove(this, begin, end)) {
+        if (begin.getPiece() != null && begin.getPiece().canMove(this, begin, end)) {
             if (end.getPiece() != null) {
                 end.getPiece().setKilled(true);
                 end.setPiece(null);
@@ -141,7 +141,11 @@ public class Board {
      * @return returns true if move is valid and move has been executed, false if move is invalid.
      */
     public boolean move(Square begin, Square end) {
-        return this.move(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
+        if(this.getSpot(begin.getX(), begin.getY()).getPiece() != null) {
+            return this.move(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -151,7 +155,11 @@ public class Board {
      * @return returns true if move is valid, false if move is invalid.
      */
     public boolean canMove(Spot begin, Spot end) {
-        return begin.getPiece().canMove(this, begin, end);
+        if(begin.getPiece() != null) {
+            return begin.getPiece().canMove(this, begin, end);
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -161,7 +169,11 @@ public class Board {
      * @return returns true if move is valid, false if move is invalid.
      */
     public boolean canMove(Square begin, Square end) {
-        return this.canMove(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
+        if(this.getSpot(begin.getX(), begin.getY()).getPiece() != null) {
+            return this.canMove(this.getSpot(begin.getX(), begin.getY()), this.getSpot(end.getX(), end.getY()));
+        } else {
+            return false;
+        }
     }
 
     /**
