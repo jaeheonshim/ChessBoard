@@ -17,22 +17,34 @@ public class Bishop extends Piece {
         }
 
         if (Math.abs(start.getX() - end.getX()) == Math.abs(start.getY() - end.getY())) {
-            int lowerX = Math.min(start.getX(), end.getX());
-            int upperX = Math.max(start.getX(), end.getX());
+            int xMutator;
+            int yMutator;
 
-            int lowerY = Math.min(start.getY(), end.getY());
-            int upperY = Math.max(start.getY(), end.getY());
+            if(start.getX() < end.getX()) {
+                // Moving to the right
+                xMutator = 1;
+            } else {
+                xMutator = -1;
+            }
 
-            int xIndex = lowerX + 1;
-            int yIndex = lowerY + 1;
+            if(start.getY() < end.getY()) {
+                // if moving up
+                yMutator = 1;
+            } else {
+                yMutator = -1;
+            }
 
-            while (xIndex < upperX && yIndex < upperY) {
-                if (board.getSpot(xIndex, yIndex).getPiece() != null) {
+
+            int xIndex = start.getX() + xMutator;
+            int yIndex = start.getY() + yMutator;
+
+            while (xIndex != end.getX() && yIndex != end.getY()) {
+                if (board.getSpot(xIndex, yIndex).getPiece() != null && xIndex != end.getX() && yIndex != end.getY()) {
                     return false;
                 }
 
-                xIndex++;
-                yIndex++;
+                xIndex += xMutator;
+                yIndex += yMutator;
             }
 
             return true;
