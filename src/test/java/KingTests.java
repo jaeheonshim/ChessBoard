@@ -92,6 +92,42 @@ public class KingTests {
         Assert.assertTrue("King should be in checkmate when in check and cannot move anywhere", testBoard.getKing(true).inCheckmate(testBoard));
     }
 
+    @Test
+    public void kingShouldBeAbleToCastleWhenNoPiecesHaveMoved() {
+        Board testBoard = new Board();
+
+        Assert.assertTrue("King should be able to castle when no pieces have moved", testBoard.getKing(true).canCastle(testBoard));
+    }
+
+    @Test
+    public void kingShouldNotCastleWhenThereArePiecesBetweenKingAndRook() {
+        Board testBoard = new Board();
+
+        Assert.assertFalse("The king should not castle when there are pieces between it and the rook", testBoard.getKing(true).canMove(testBoard, testBoard.getSpot(6, 0)));
+    }
+
+    @Test
+    public void kingShouldNotCastleThroughCheck() {
+        Board testBoard = initBoard();
+
+        testBoard.getSpot(4, 0).setPiece(new King(true));
+        testBoard.getSpot(0, 0).setPiece(new Rook(true));
+        testBoard.getSpot(1, 3).setPiece(new Rook(false));
+
+        Assert.assertFalse("King should not castle through check", testBoard.getKing(true).canMove(testBoard, testBoard.getSpot(2, 0)));
+    }
+
+    @Test
+    public void whiteKingShouldCastleLeft() {
+        Board testBoard = new Board();
+
+        testBoard.getSpot(1, 0).setPiece(null);
+        testBoard.getSpot(2, 0).setPiece(null);
+        testBoard.getSpot(3, 0).setPiece(null);
+
+        Assert.assertTrue("King should castle left if all conditions are met", testBoard.getKing(true).canMove(testBoard, testBoard.getSpot(2, 0)));
+    }
+
     private Board initBoard() {
         Board testBoard = new Board();
         Spot[][] newBoard = new Spot[8][8];
