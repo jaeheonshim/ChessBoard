@@ -35,6 +35,8 @@ public class King extends Piece {
                     board.getSpot(i, end.getY()).setPiece(tempPiece);
                     tempSpot.setPiece(this);
                 }
+
+
             } else if(end.getX() == 6) {
                 for(int i = getSpot(board).getX() + 1; i < 7; i++) {
                     if(board.getSpot(i, end.getY()).getPiece() != null) {

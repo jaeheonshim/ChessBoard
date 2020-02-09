@@ -125,7 +125,10 @@ public class KingTests {
         testBoard.getSpot(2, 0).setPiece(null);
         testBoard.getSpot(3, 0).setPiece(null);
 
-        Assert.assertTrue("King should castle left if all conditions are met", testBoard.getKing(true).canMove(testBoard, testBoard.getSpot(2, 0)));
+        Assert.assertTrue("King should castle left if all conditions are met", testBoard.move(testBoard.getKing(true).getSpot(testBoard), testBoard.getSpot(2, 0)));
+
+
+        System.out.println(testBoard);
     }
 
     private Board initBoard() {
