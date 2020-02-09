@@ -131,6 +131,18 @@ public class KingTests {
         System.out.println(testBoard);
     }
 
+    @Test
+    public void whiteKingShouldCastleRight() {
+        Board testBoard = new Board();
+
+        testBoard.getSpot(5, 0).setPiece(null);
+        testBoard.getSpot(6, 0).setPiece(null);
+
+        Assert.assertTrue("King should castle right if all conditions are met", testBoard.move(testBoard.getKing(true).getSpot(testBoard), testBoard.getSpot(6, 0)));
+
+        System.out.println(testBoard);
+    }
+
     private Board initBoard() {
         Board testBoard = new Board();
         Spot[][] newBoard = new Spot[8][8];

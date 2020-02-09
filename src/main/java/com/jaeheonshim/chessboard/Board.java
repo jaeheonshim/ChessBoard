@@ -137,10 +137,12 @@ public class Board {
 						  return true;
 					 } else if (end.getX() == 6) {
 						  end.setPiece(begin.getPiece());
+						  begin.getPiece().setMoved();
 						  begin.setPiece(null);
-						  Piece rook = this.getSpot(0, end.getY()).getPiece();
-						  this.getSpot(0, end.getY()).setPiece(null);
+						  Piece rook = this.getSpot(7, end.getY()).getPiece();
+						  this.getSpot(7, end.getY()).setPiece(null);
 						  this.getSpot(end.getX() - 1, end.getY()).setPiece(rook);
+						  rook.setMoved();
 						  return true;
 					 } else {
 						  return false;
