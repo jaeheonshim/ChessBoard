@@ -16,6 +16,11 @@ The ChessBoard dependency can be added from the maven repository.
         <version>0.1.0</version>
     </dependency>
 
+## Testing
+The unit test suite is stored under /src/test/java. Tests can be run with the following command:  
+
+    mvn test
+
 ## Usage
 ### Create a new chessboard
     Board board = new Board();  
@@ -64,6 +69,35 @@ Result:
         
     PPPP PPP
     RNBQKBNR
+
+## Contributing
+We would love any and all contributions from the community improving our code base. Your help allows `ChessBoard` to become even better.   
+ 
+To contribute, fork this repository and make all necessary changes on that fork. A pull request can be made to merge your changes with this repository.
+
+Again, thank you for your consideration on becoming a developer for `ChessBoard`.
+
+## Support
+If you would like to say **thank you** and support the development of `ChessBoard`,    
+- Add a GitHub star to this project
+- Tweet about this project on your Twitter
+- Write a review or tutorial on your personal blog.
+
+Thank you for all of your support on the active development of `ChessBoard`.
+
+## Licensing
+`ChessBoard` is published under the MIT License. More information about this license can be found in the LICENSE file.
+ 
+In a nutshell, 
+
+**You are permitted to:**
+- Use ChessBoard for commercial purposes
+- Modify ChessBoard
+- Distribute and sublicense ChessBoard
+- Use ChessBoard for private (non open-source) projects
+
+**Under the assumption that:**  
+The copyright notice is included in all copies or substantial portions of ChessBoard.
 
 ## Versioning
 The ChessBoard library uses [semantic versioning](https://semver.org/) to define version numbers.
