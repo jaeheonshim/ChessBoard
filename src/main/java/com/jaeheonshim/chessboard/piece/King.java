@@ -36,16 +36,34 @@ public class King extends Piece {
                     tempSpot.setPiece(this);
                 }
 
-
+                return true;
             } else if(end.getX() == 6) {
                 for(int i = getSpot(board).getX() + 1; i < 7; i++) {
                     if(board.getSpot(i, end.getY()).getPiece() != null) {
                         return false;
                     }
                 }
-            }
 
-            return true;
+                for(int i = getSpot(board).getX() + 1; i < 7; i++) {
+                    Spot tempSpot = this.getSpot(board);
+
+                    Piece tempPiece = board.getSpot(i, end.getY()).getPiece();
+
+                    board.getSpot(i, end.getY()).setPiece(this);
+                    tempSpot.setPiece(null);
+
+                    if(this.inCheck(board)) {
+                        board.getSpot(i, end.getY()).setPiece(tempPiece);
+                        tempSpot.setPiece(this);
+                        return false;
+                    }
+
+                    board.getSpot(i, end.getY()).setPiece(tempPiece);
+                    tempSpot.setPiece(this);
+                }
+
+                return true;
+            }
         }
 
         if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
