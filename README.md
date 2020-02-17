@@ -21,7 +21,7 @@ The unit test suite is stored under /src/test/java. Tests can be run with the fo
 
     mvn test
 
-## Usage
+## API Documentation
 ### Create a new chessboard
     Board board = new Board();  
     System.out.println(board.toString());
@@ -69,6 +69,19 @@ Result:
         
     PPPP PPP
     RNBQKBNR
+## Developmental Goals
+The ChessBoard library at this current time is by no means complete. It has yet to implement features such as fen notation parsing and output, and en passant. 
+Here is a non-exhaustive list of tasks that must be completed before production release:
+- Implement En Passant movement
+- Implement FEN notation parsing and input
+- Return all moves possible from board
+- Check for stalemate
+- Check for draws
+- Get number of points for each side
+- Event listeners
+
+Phew! There is a lot of work to be done.
+
 
 ## Contributing
 We would love any and all contributions from the community improving our code base. Your help allows `ChessBoard` to become even better.   
