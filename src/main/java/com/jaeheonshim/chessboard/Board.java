@@ -258,4 +258,45 @@ public class Board {
 	 public Spot[][] getBoard () {
 		  return board;
 	 }
+
+	public static void main(String[] args) {
+		Board board = new Board();
+
+		System.out.println(board.getFenPiecePlacement());
+	}
+
+	 private String getFenPiecePlacement() {
+	 	StringBuilder stringBuilder = new StringBuilder();
+
+	 	for(int i = 7; i >= 0; i--) {
+	 		stringBuilder.append(getRowAsString(i));
+	 		if(i > 0) {
+	 			stringBuilder.append("/");
+			}
+		}
+
+	 	return stringBuilder.toString();
+	 }
+
+	 private String getRowAsString(int row) {
+	 	StringBuilder sb = new StringBuilder(8);
+	 	int blankCount = 0;
+	 	for(int i = 0; i < board[row].length; i++) {
+	 		Piece piece = board[row][i].getPiece();
+	 		if(piece == null) {
+	 			blankCount++;
+			} else if(blankCount > 0) {
+	 			sb.append(blankCount);
+	 			blankCount = 0;
+			} else {
+				sb.append(piece.toString());
+			}
+
+	 		if(i + 1 == board[row].length && blankCount > 0) {
+	 			sb.append(blankCount);
+			}
+		}
+
+	 	return sb.toString();
+	 }
 }
