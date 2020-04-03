@@ -94,4 +94,8 @@ public enum Square {
     public int getY() {
         return y;
     }
+
+    public Spot getSpot(Board board) {
+        return board.getSpot(x, y);
+    }
 }

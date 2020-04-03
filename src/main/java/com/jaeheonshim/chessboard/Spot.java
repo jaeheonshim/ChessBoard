@@ -2,6 +2,8 @@ package com.jaeheonshim.chessboard;
 
 import com.jaeheonshim.chessboard.piece.Piece;
 
+import java.util.Objects;
+
 /**
  * Represents a spot within a Board.
  *
@@ -66,6 +68,20 @@ public class Spot {
         }
 
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Spot spot = (Spot) o;
+        return x == spot.x &&
+                y == spot.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override
