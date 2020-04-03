@@ -14,4 +14,16 @@ public class BoardTests {
 
         Assert.assertEquals(testBoard.getMoves().get(0), correctMove);
     }
+
+    @Test
+    public void boardShouldReturnCorrectTurn() {
+        Board testBoard = new Board();
+        Assert.assertTrue(testBoard.isWhiteTurn());
+
+        testBoard.move(Square.A2, Square.A4);
+        Assert.assertFalse(testBoard.isWhiteTurn());
+
+        testBoard.move(Square.A7, Square.A6);
+        Assert.assertTrue(testBoard.isWhiteTurn());
+    }
 }

@@ -5,10 +5,12 @@ import java.util.Objects;
 public class Move {
     private Spot start;
     private Spot end;
+    private boolean whiteMove;
 
     public Move(Spot start, Spot end) {
         this.start = start;
         this.end = end;
+        whiteMove = start.getPiece().isWhite();
     }
 
     public Spot getStart() {
@@ -20,7 +22,7 @@ public class Move {
     }
 
     public boolean isWhiteMove() {
-        return start.getPiece().isWhite();
+        return whiteMove;
     }
 
     @Override

@@ -282,6 +282,25 @@ public class Board {
         System.out.println(board.getFenPiecePlacement());
     }
 
+    public boolean isWhiteTurn() {
+        if(moves.size() == 0) {
+            return true;
+        }
+
+        int whiteMoves = 0;
+        int blackMoves = 0;
+
+        for(Move move : moves) {
+            if(move.isWhiteMove()) {
+                whiteMoves++;
+            } else {
+                blackMoves++;
+            }
+        }
+
+        return whiteMoves <= blackMoves;
+    }
+
     private String getFenPiecePlacement() {
         StringBuilder stringBuilder = new StringBuilder();
 
