@@ -3,6 +3,7 @@ import com.jaeheonshim.chessboard.Square;
 import com.jaeheonshim.chessboard.piece.King;
 import com.jaeheonshim.chessboard.piece.Pawn;
 import com.jaeheonshim.chessboard.Spot;
+import com.jaeheonshim.chessboard.piece.Queen;
 import com.jaeheonshim.chessboard.piece.Rook;
 import org.junit.Assert;
 import org.junit.Test;
@@ -110,5 +111,20 @@ public class PawnTests {
 
         Assert.assertFalse("Pawn should not move diagonally if destination does not have a piece of the opposite color", testBoard.move(
            Square.E2, Square.F3));
+    }
+
+    @Test
+    public void pawnShouldPromoteToQueen() {
+        Board testBoard = new Board();
+        testBoard.clear();
+
+        testBoard.getSpot(0, 6).setPiece(new Pawn(true));
+        testBoard.getSpot(0, 1).setPiece(new Pawn(false));
+
+        testBoard.move(testBoard.getSpot(0, 6), testBoard.getSpot(0, 7));
+        testBoard.move(testBoard.getSpot(0, 1), testBoard.getSpot(0, 0));
+
+        Assert.assertTrue("Pawn should promote to queen after traveling across the whole board", testBoard.getSpot(0, 7).getPiece() instanceof Queen);
+        Assert.assertTrue("Pawn should promote to queen after traveling across the whole board", testBoard.getSpot(0, 0).getPiece() instanceof Queen);
     }
 }

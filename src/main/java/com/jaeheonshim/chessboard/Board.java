@@ -158,6 +158,10 @@ public class Board {
 				end.setPiece(begin.getPiece());
 				begin.getPiece().setMoved();
 				begin.setPiece(null);
+
+				if(end.getPiece() instanceof Pawn && end.getPiece().isWhite() ? end.getY() == 7 : end.getY() == 0) {
+					end.setPiece(new Queen(end.getPiece().isWhite()));
+				}
 				return true;
 		  } else {
 				return false;
