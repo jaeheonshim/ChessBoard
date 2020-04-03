@@ -129,10 +129,21 @@ public class Board {
      * @return returns true if move is valid and move has been executed, false if move is invalid.
      */
     public boolean move(Spot begin, Spot end) {
-        Move move = new Move(begin, end);
+        return move(begin, end, false);
+    }
+
+    public boolean moveIgnoreTurn(Spot begin, Spot end) {
+        return move(begin, end, true);
+    }
+
+    private boolean move(Spot begin, Spot end, boolean ignoreTurn) {
+        Move move = new Move(begin, end, isWhiteTurn());
+        if(!ignoreTurn && begin.getPiece().isWhite() != isWhiteTurn()) {
+            return false;
+        }
+
         if (begin.getPiece() instanceof King && ((King) begin.getPiece()).canCastle(this) && (end.getX() == 2 ^ end.getX() == 6)) {
             // castling implementation
-
             if (begin.getPiece().canMove(this, begin, end)) {
                 if (end.getX() == 2) {
                     end.setPiece(begin.getPiece());

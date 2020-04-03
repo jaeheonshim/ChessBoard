@@ -7,10 +7,15 @@ public class Move {
     private Spot end;
     private boolean whiteMove;
 
-    public Move(Spot start, Spot end) {
+    /**
+     * Creates a new move object.
+     * @param start Starting position of move
+     * @param end Ending position of move
+     */
+    public Move(Spot start, Spot end, boolean whiteMove) {
         this.start = start;
         this.end = end;
-        whiteMove = start.getPiece().isWhite();
+        this.whiteMove = whiteMove;
     }
 
     public Spot getStart() {

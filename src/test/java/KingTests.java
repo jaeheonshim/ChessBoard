@@ -151,7 +151,7 @@ public class KingTests {
         testBoard.getSpot(2, 7).setPiece(null);
         testBoard.getSpot(3, 7).setPiece(null);
 
-        Assert.assertTrue("King should castle left if all conditions are met", testBoard.move(testBoard.getKing(false).getSpot(testBoard), testBoard.getSpot(2, 7)));
+        Assert.assertTrue("King should castle left if all conditions are met", testBoard.moveIgnoreTurn(testBoard.getKing(false).getSpot(testBoard), testBoard.getSpot(2, 7)));
 
 
         System.out.println(testBoard);
@@ -164,7 +164,7 @@ public class KingTests {
         testBoard.getSpot(5, 7).setPiece(null);
         testBoard.getSpot(6, 7).setPiece(null);
 
-        Assert.assertTrue("King should castle right if all conditions are met", testBoard.move(testBoard.getKing(false).getSpot(testBoard), testBoard.getSpot(6, 7)));
+        Assert.assertTrue("King should castle right if all conditions are met", testBoard.moveIgnoreTurn(testBoard.getKing(false).getSpot(testBoard), testBoard.getSpot(6, 7)));
 
         System.out.println(testBoard);
     }

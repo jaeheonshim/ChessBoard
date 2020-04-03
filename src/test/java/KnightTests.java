@@ -22,7 +22,7 @@ public class KnightTests {
                 testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(2, 2)));
         testBoard.resetBoard();
         Assert.assertTrue("Knight should move two forward and one to left",
-                testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(0, 2)));
+                testBoard.moveIgnoreTurn(testBoard.getSpot(1, 0), testBoard.getSpot(0, 2)));
         testBoard.resetBoard();
         Assert.assertFalse("Knight should not move two forward only",
                 testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(1, 2)));

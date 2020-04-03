@@ -8,9 +8,9 @@ public class BoardTests {
     @Test
     public void boardShouldRecordMoves() {
         Board testBoard = new Board();
-        testBoard.move(Square.A2, Square.A4);
 
-        Move correctMove = new Move(Square.A2.getSpot(testBoard), Square.A4.getSpot(testBoard));
+        Move correctMove = new Move(Square.A2.getSpot(testBoard), Square.A4.getSpot(testBoard), true);
+        testBoard.move(Square.A2, Square.A4);
 
         Assert.assertEquals(testBoard.getMoves().get(0), correctMove);
     }

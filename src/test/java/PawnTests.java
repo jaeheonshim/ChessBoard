@@ -83,7 +83,7 @@ public class PawnTests {
         Board testBoard = new Board();
         testBoard.move(testBoard.getSpot(0, 6), testBoard.getSpot(0, 5));
         Assert.assertFalse("Black pawns should not move backwards",
-                testBoard.move(testBoard.getSpot(0, 5), testBoard.getSpot(0, 6)));
+                testBoard.moveIgnoreTurn(testBoard.getSpot(0, 5), testBoard.getSpot(0, 6)));
     }
 
     @Test
