@@ -8,17 +8,41 @@ public class King extends Piece {
         super(white);
     }
 
+    public boolean canCastleQueenside(Board board) {
+        if (canCastle(board)) {
+            if(isWhite()) {
+                return !board.getSpot(2, 0).getPiece().isMoved();
+            } else {
+                return !board.getSpot(2, 7).getPiece().isMoved();
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public boolean canCastleKingside(Board board) {
+        if (canCastle(board)) {
+            if(isWhite()) {
+                return !board.getSpot(6, 0).getPiece().isMoved();
+            } else {
+                return !board.getSpot(6, 7).getPiece().isMoved();
+            }
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public boolean canMove(Board board, Spot start, Spot end) {
-        if(canCastle(board)) {
-            if(end.getX() == 2) {
-                for(int i = getSpot(board).getX() - 1; i > 0; i--) {
-                    if(board.getSpot(i, end.getY()).getPiece() != null) {
+        if (canCastle(board)) {
+            if (end.getX() == 2) {
+                for (int i = getSpot(board).getX() - 1; i > 0; i--) {
+                    if (board.getSpot(i, end.getY()).getPiece() != null) {
                         return false;
                     }
                 }
 
-                for(int i = getSpot(board).getX() - 1; i > 0; i--) {
+                for (int i = getSpot(board).getX() - 1; i > 0; i--) {
                     Spot tempSpot = this.getSpot(board);
 
                     Piece tempPiece = board.getSpot(i, end.getY()).getPiece();
@@ -26,7 +50,7 @@ public class King extends Piece {
                     board.getSpot(i, end.getY()).setPiece(this);
                     tempSpot.setPiece(null);
 
-                    if(this.inCheck(board)) {
+                    if (this.inCheck(board)) {
                         board.getSpot(i, end.getY()).setPiece(tempPiece);
                         tempSpot.setPiece(this);
                         return false;
@@ -37,14 +61,14 @@ public class King extends Piece {
                 }
 
                 return true;
-            } else if(end.getX() == 6) {
-                for(int i = getSpot(board).getX() + 1; i < 7; i++) {
-                    if(board.getSpot(i, end.getY()).getPiece() != null) {
+            } else if (end.getX() == 6) {
+                for (int i = getSpot(board).getX() + 1; i < 7; i++) {
+                    if (board.getSpot(i, end.getY()).getPiece() != null) {
                         return false;
                     }
                 }
 
-                for(int i = getSpot(board).getX() + 1; i < 7; i++) {
+                for (int i = getSpot(board).getX() + 1; i < 7; i++) {
                     Spot tempSpot = this.getSpot(board);
 
                     Piece tempPiece = board.getSpot(i, end.getY()).getPiece();
@@ -52,7 +76,7 @@ public class King extends Piece {
                     board.getSpot(i, end.getY()).setPiece(this);
                     tempSpot.setPiece(null);
 
-                    if(this.inCheck(board)) {
+                    if (this.inCheck(board)) {
                         board.getSpot(i, end.getY()).setPiece(tempPiece);
                         tempSpot.setPiece(this);
                         return false;
@@ -90,7 +114,7 @@ public class King extends Piece {
             return Math.abs(start.getY() - end.getY()) <= 1;
         } else if (start.getY() == end.getY()) {
             return Math.abs(start.getX() - end.getX()) <= 1;
-        } else if(Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY()) > 2) {
+        } else if (Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY()) > 2) {
             return false;
         }
 
@@ -98,10 +122,10 @@ public class King extends Piece {
     }
 
     public boolean canCastle(Board board) {
-        if(!isMoved() && !inCheck(board)) {
-            for(Spot[] spots : board.getBoard()) {
-                for(Spot spot : spots) {
-                    if(spot.getPiece() instanceof Rook && spot.getPiece().isWhite() == isWhite() && !spot.getPiece().isMoved()) {
+        if (!isMoved() && !inCheck(board)) {
+            for (Spot[] spots : board.getBoard()) {
+                for (Spot spot : spots) {
+                    if (spot.getPiece() instanceof Rook && spot.getPiece().isWhite() == isWhite() && !spot.getPiece().isMoved()) {
                         return true;
                     }
                 }
@@ -124,7 +148,7 @@ public class King extends Piece {
     }
 
     public boolean inCheckmate(Board board) {
-        if(this.inCheck(board)) {
+        if (this.inCheck(board)) {
             for (Spot[] spots : board.getBoard()) {
                 for (Spot spot : spots) {
                     if (this.canMove(board, spot)) {

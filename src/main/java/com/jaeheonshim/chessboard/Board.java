@@ -4,6 +4,7 @@ import com.jaeheonshim.chessboard.piece.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -138,7 +139,7 @@ public class Board {
 
     private boolean move(Spot begin, Spot end, boolean ignoreTurn) {
         Move move = new Move(begin, end, isWhiteTurn());
-        if(!ignoreTurn && begin.getPiece().isWhite() != isWhiteTurn()) {
+        if (!ignoreTurn && begin.getPiece().isWhite() != isWhiteTurn()) {
             return false;
         }
 
@@ -289,20 +290,62 @@ public class Board {
 
     public static void main(String[] args) {
         Board board = new Board();
+        board.move(Square.A2, Square.A4);
+        board.move(Square.A7, Square.A6);
 
-        System.out.println(board.getFenPiecePlacement());
+        System.out.println(board.getFenRecord());
+    }
+
+    public String getFenRecord() {
+        StringBuilder fenBuilder = new StringBuilder();
+        fenBuilder.append(getFenPiecePlacement());
+        fenBuilder.append(" ");
+        fenBuilder.append(isWhiteTurn() ? "w" : "b");
+        fenBuilder.append(" ");
+
+        boolean canCastle = false;
+        if (getKing(true).canCastleKingside(this)) {
+            canCastle = true;
+            fenBuilder.append("K");
+        }
+        if (getKing(true).canCastleQueenside(this)) {
+            canCastle = true;
+            fenBuilder.append("Q");
+        }
+        if (getKing(false).canCastleKingside(this)) {
+            canCastle = true;
+            fenBuilder.append("k");
+        }
+        if (getKing(false).canCastleQueenside(this)) {
+            canCastle = true;
+            fenBuilder.append("q");
+        }
+
+        if(!canCastle) {
+            fenBuilder.append("-");
+        }
+
+        fenBuilder.append(" ");
+        fenBuilder.append("-"); //TODO update when en passant is implemented
+        fenBuilder.append(" ");
+        fenBuilder.append("0"); //TODO implement halfmoves
+        fenBuilder.append(" ");
+        fenBuilder.append(moves.size() / 2 + 1);
+
+
+        return fenBuilder.toString();
     }
 
     public boolean isWhiteTurn() {
-        if(moves.size() == 0) {
+        if (moves.size() == 0) {
             return true;
         }
 
         int whiteMoves = 0;
         int blackMoves = 0;
 
-        for(Move move : moves) {
-            if(move.isWhiteMove()) {
+        for (Move move : moves) {
+            if (move.isWhiteMove()) {
                 whiteMoves++;
             } else {
                 blackMoves++;
