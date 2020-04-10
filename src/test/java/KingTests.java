@@ -77,7 +77,7 @@ public class KingTests {
     public void kingShouldBeInCheckIfUnderThreat() {
         Board testBoard = initBoard();
 
-        testBoard.getBoard()[1][0].setPiece(new Rook(false));
+        testBoard.getBoardSpots()[1][0].setPiece(new Rook(false));
         Assert.assertTrue(testBoard.getKing(true).inCheck(testBoard));
     }
 
@@ -85,9 +85,9 @@ public class KingTests {
     public void kingShouldBeInCheckmate() {
         Board testBoard = initBoard();
 
-        testBoard.getBoard()[0][0].setPiece(new Rook(false));
-        testBoard.getBoard()[1][0].setPiece(new Rook(false));
-        testBoard.getBoard()[0][5].setPiece(new King(true));
+        testBoard.getBoardSpots()[0][0].setPiece(new Rook(false));
+        testBoard.getBoardSpots()[1][0].setPiece(new Rook(false));
+        testBoard.getBoardSpots()[0][5].setPiece(new King(true));
 
         Assert.assertTrue("King should be in checkmate when in check and cannot move anywhere", testBoard.getKing(true).inCheckmate(testBoard));
     }

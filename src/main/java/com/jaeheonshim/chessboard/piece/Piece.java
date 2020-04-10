@@ -21,6 +21,7 @@ public abstract class Piece {
 
     /**
      * Returns whether the current piece is white.
+     *
      * @return true if the current piece is white, false if it is black
      */
     public boolean isWhite() {
@@ -29,9 +30,10 @@ public abstract class Piece {
 
     /**
      * Returns a boolean based on whether a certain move on the board is possible
-     * @param board Board piece is located within
-     * @param start Starting spot of piece
-     * @param end Spot to move piece to
+     *
+     * @param board            Board piece is located within
+     * @param start            Starting spot of piece
+     * @param end              Spot to move piece to
      * @param checkKingInCheck Whether to check if the king is in check and disallow move.
      * @return true if move is possible, false if move is forbidden
      */
@@ -42,17 +44,19 @@ public abstract class Piece {
 
     /**
      * Returns a boolean based on whether a certain move on the board is possible
+     *
      * @param board Board piece is located within
      * @param start Starting spot of piece
-     * @param end Spot to move piece to
+     * @param end   Spot to move piece to
      * @return true if move is possible, false if move is forbidden
      */
     public abstract boolean canMove(Board board, Spot start, Spot end);
 
     /**
      * Returns a boolean based on whether a certain move on the board is possible
+     *
      * @param board Board piece is located within
-     * @param end Spot to move piece to
+     * @param end   Spot to move piece to
      * @return true if move is possible, false if move is forbidden
      */
     public boolean canMove(Board board, Spot end) {
@@ -61,9 +65,10 @@ public abstract class Piece {
 
     /**
      * Returns a boolean based on whether a certain move on the board is possible
+     *
      * @param board Board piece is located within
      * @param start Square enumeration of starting position of piece
-     * @param end Square enumeration of spot to move piece to
+     * @param end   Square enumeration of spot to move piece to
      * @return true if move is possible, false if move is forbidden
      */
     public boolean canMove(Board board, Square start, Square end) {
@@ -83,6 +88,7 @@ public abstract class Piece {
 
     /**
      * Returns whether piece has been previously moved
+     *
      * @return true if piece has been moved, false if piece is in default position
      */
     public boolean isMoved() {
@@ -91,11 +97,12 @@ public abstract class Piece {
 
     /**
      * Returns the spot of the piece on the board
+     *
      * @param board Board piece is located within
      * @return Spot corresponding with position within board
      */
     public Spot getSpot(Board board) {
-        for (Spot[] spots : board.getBoard()) {
+        for (Spot[] spots : board.getBoardSpots()) {
             for (Spot spot : spots) {
                 if (spot.getPiece() == this) {
                     return spot;
@@ -108,6 +115,7 @@ public abstract class Piece {
 
     /**
      * Returns the string representation of a piece. Should be capitalized for white pieces, lowercase for black pieces.
+     *
      * @return
      */
     @Override

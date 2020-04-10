@@ -6,8 +6,6 @@ import com.jaeheonshim.chessboard.piece.Rook;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 public class KnightTests {
     @Test
     public void knightShouldJumpOverPieces() {
@@ -32,7 +30,7 @@ public class KnightTests {
     public void knightShouldNotLandOnSameColor() {
         Board testBoard = new Board();
 
-        testBoard.getBoard()[2][0] = new Spot(0, 2, new Knight(true));
+        testBoard.getBoardSpots()[2][0] = new Spot(0, 2, new Knight(true));
 
         Assert.assertFalse("Knight should not land on a piece of the same color", testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(0, 2)));
     }
@@ -41,7 +39,7 @@ public class KnightTests {
     public void knightShouldKillOnLanding() {
         Board testBoard = new Board();
 
-        testBoard.getBoard()[2][0] = new Spot(0, 2, new Knight(false));
+        testBoard.getBoardSpots()[2][0] = new Spot(0, 2, new Knight(false));
 
         Assert.assertTrue("Knight should land on a piece of the opposite color", testBoard.move(testBoard.getSpot(1, 0), testBoard.getSpot(0, 2)));
 
