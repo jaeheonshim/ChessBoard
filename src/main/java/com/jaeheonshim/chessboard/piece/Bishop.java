@@ -10,9 +10,8 @@ public class Bishop extends Piece {
 
     @Override
     public boolean canMove(Board board, Spot start, Spot end) {
-        if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
-            return false;
-        } else if (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
+        if ((end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) ||
+                (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board))) {
             return false;
         }
 
@@ -39,14 +38,14 @@ public class Bishop extends Piece {
             int xMutator;
             int yMutator;
 
-            if(start.getX() < end.getX()) {
+            if (start.getX() < end.getX()) {
                 // Moving to the right
                 xMutator = 1;
             } else {
                 xMutator = -1;
             }
 
-            if(start.getY() < end.getY()) {
+            if (start.getY() < end.getY()) {
                 // if moving up
                 yMutator = 1;
             } else {

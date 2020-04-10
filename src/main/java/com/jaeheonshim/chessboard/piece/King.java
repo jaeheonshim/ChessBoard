@@ -10,7 +10,7 @@ public class King extends Piece {
 
     public boolean canCastleQueenside(Board board) {
         if (canCastle(board)) {
-            if(isWhite()) {
+            if (isWhite()) {
                 return !board.getSpot(2, 0).getPiece().isMoved();
             } else {
                 return !board.getSpot(2, 7).getPiece().isMoved();
@@ -22,7 +22,7 @@ public class King extends Piece {
 
     public boolean canCastleKingside(Board board) {
         if (canCastle(board)) {
-            if(isWhite()) {
+            if (isWhite()) {
                 return !board.getSpot(6, 0).getPiece().isMoved();
             } else {
                 return !board.getSpot(6, 7).getPiece().isMoved();
@@ -98,7 +98,7 @@ public class King extends Piece {
         Spot tempSpot = this.getSpot(board);
         end.setPiece(this);
         this.getSpot(board).setPiece(null);
-        for (Spot[] spots : board.getBoard()) {
+        for (Spot[] spots : board.getBoardSpots()) {
             for (Spot spot : spots) {
                 if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece().isWhite() != isWhite() && spot.getPiece().canMove(board, spot, end)) {
                     end.setPiece(endTemp);
@@ -123,7 +123,7 @@ public class King extends Piece {
 
     public boolean canCastle(Board board) {
         if (!isMoved() && !inCheck(board)) {
-            for (Spot[] spots : board.getBoard()) {
+            for (Spot[] spots : board.getBoardSpots()) {
                 for (Spot spot : spots) {
                     if (spot.getPiece() instanceof Rook && spot.getPiece().isWhite() == isWhite() && !spot.getPiece().isMoved()) {
                         return true;
@@ -136,7 +136,7 @@ public class King extends Piece {
     }
 
     public boolean inCheck(Board board) {
-        for (Spot[] spots : board.getBoard()) {
+        for (Spot[] spots : board.getBoardSpots()) {
             for (Spot spot : spots) {
                 if (spot.getPiece() != null && !(spot.getPiece() instanceof King) && spot.getPiece() != this && spot.getPiece().isWhite() != isWhite() && spot.getPiece().canMove(board, spot, this.getSpot(board), false)) {
                     return true; //if any piece on the board can kill the king after it has made its move, you will be unable to make the move.
@@ -149,7 +149,7 @@ public class King extends Piece {
 
     public boolean inCheckmate(Board board) {
         if (this.inCheck(board)) {
-            for (Spot[] spots : board.getBoard()) {
+            for (Spot[] spots : board.getBoardSpots()) {
                 for (Spot spot : spots) {
                     if (this.canMove(board, spot)) {
                         Piece tempPiece = spot.getPiece();

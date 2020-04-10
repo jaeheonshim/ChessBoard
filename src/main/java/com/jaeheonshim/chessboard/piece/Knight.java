@@ -4,57 +4,57 @@ import com.jaeheonshim.chessboard.Board;
 import com.jaeheonshim.chessboard.Spot;
 
 public class Knight extends Piece {
-	 private final int[] movesX = new int[] {-1, -2, -2, -1, +1, +2, +2, +1};
-	 private final int[] movesY = new int[] {+2, +1, -1, -2, -2, -1, +1, +2};
+    private final int[] movesX = new int[]{-1, -2, -2, -1, +1, +2, +2, +1};
+    private final int[] movesY = new int[]{+2, +1, -1, -2, -2, -1, +1, +2};
 
-	 public Knight (boolean white) {
-		  super(white);
-	 }
+    public Knight(boolean white) {
+        super(white);
+    }
 
-	 @Override public boolean canMove (Board board, Spot start, Spot end) {
-	 	 if(end.getX() > 8 || end.getX() < 0 || end.getY() > 8 || end.getY() < 0) {
-	 	 	 return false;
-		 } else if (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
-			 return false;
-		 }
+    @Override
+    public boolean canMove(Board board, Spot start, Spot end) {
+        if ((end.getX() > 8 || end.getX() < 0 || end.getY() > 8 || end.getY() < 0) ||
+                (checkKingInCheck && board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board))) {
+            return false;
+        }
 
-		  if (checkKingInCheck) {
-				Spot tempSpot = this.getSpot(board);
-				Piece tempPiece = end.getPiece();
+        if (checkKingInCheck) {
+            Spot tempSpot = this.getSpot(board);
+            Piece tempPiece = end.getPiece();
 
-				end.setPiece(this);
-				start.setPiece(null);
+            end.setPiece(this);
+            start.setPiece(null);
 
-				if (board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
-					 end.setPiece(tempPiece);
-					 tempSpot.setPiece(this);
-					 return false;
-				}
+            if (board.getKing(isWhite()) != null && board.getKing(isWhite()).inCheck(board)) {
+                end.setPiece(tempPiece);
+                tempSpot.setPiece(this);
+                return false;
+            }
 
-				end.setPiece(tempPiece);
-				tempSpot.setPiece(this);
-		  }
+            end.setPiece(tempPiece);
+            tempSpot.setPiece(this);
+        }
 
-	 	 checkKingInCheck = true;
+        checkKingInCheck = true;
 
-	 	 if(end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
-	 	 	 return false;
-		 }
+        if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
+            return false;
+        }
 
-	 	 for(int i = 0; i < 8; i++) {
-	 	 	 if(start.getX() + movesX[i] == end.getX() && start.getY() + movesY[i] == end.getY()) {
-	 	 	 	 return true;
-			 }
-		 }
+        for (int i = 0; i < 8; i++) {
+            if (start.getX() + movesX[i] == end.getX() && start.getY() + movesY[i] == end.getY()) {
+                return true;
+            }
+        }
 
-	 	 return false;
-	 }
+        return false;
+    }
 
-	 public String toString () {
-		  if(isWhite()) {
-		  	 return "N";
-		  } else {
-		  	 return "n";
-		  }
-	 }
+    public String toString() {
+        if (isWhite()) {
+            return "N";
+        } else {
+            return "n";
+        }
+    }
 }

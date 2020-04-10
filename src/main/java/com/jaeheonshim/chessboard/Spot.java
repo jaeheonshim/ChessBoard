@@ -11,7 +11,8 @@ import java.util.Objects;
  */
 public class Spot {
     private Piece piece;
-    private int x, y;
+    private int x;
+    private int y;
 
     public Spot(int x, int y, Piece piece) {
         this.x = x;
@@ -89,7 +90,7 @@ public class Spot {
         if (getPiece() != null) {
             return getPiece().toString();
         } else {
-            return null;
+            return "";
         }
     }
 }
