@@ -57,9 +57,9 @@ public class Rook extends Piece {
             }
         } else if (start.getY() == end.getY()) {
             //moving horizontally
-            if (start.getX() > end.getX()) {
-                for (int i = start.getX() - 1; i < end.getX(); i--) {
-                    if (board.getSpot(i, start.getY()) != null) {
+            if(start.getX() > end.getX()) {
+                for(int i = start.getX() - 1; i > end.getX(); i--) {
+                    if(board.getSpot(i, start.getY()).getPiece() != null) {
                         //if there are pieces in the way
                         return false;
                     }
