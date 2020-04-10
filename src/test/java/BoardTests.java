@@ -25,5 +25,11 @@ public class BoardTests {
 
         testBoard.move(Square.A7, Square.A6);
         Assert.assertTrue(testBoard.isWhiteTurn());
+
+        testBoard.resetBoard();
+        Assert.assertTrue(testBoard.isWhiteTurn());
+
+        testBoard.setWhiteToMove(false);
+        Assert.assertFalse(testBoard.isWhiteTurn());
     }
 }
