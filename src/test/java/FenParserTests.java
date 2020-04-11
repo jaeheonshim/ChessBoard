@@ -101,9 +101,9 @@ public class FenParserTests {
     @Test
     public void testLoadBoardFromFen() {
         Board testBoard = new Board();
-        testBoard.loadFromFen("R1r5/4b3/2q4n/4n3/2q2ppp/5ppp/8/R2N1N1P w - - 0 1");
+        testBoard.loadFromFen("rn1qk1nr/ppp1bppp/4p3/3p1bB1/3P4/2N2N2/PPP1PPPP/R2QKB1R w KQkq - 2 5");
         System.out.println(testBoard.toString());
-        Assert.assertEquals("R r     \n    b   \n  q    n\n    n   \n  q  ppp\n     ppp\n        \nR  N N P\n",
+        Assert.assertEquals("rn qk nr\nppp bppp\n    p   \n   p bB \n   P    \n  N  N  \nPPP PPPP\nR  QKB R\n",
                 testBoard.toString());
     }
 }
