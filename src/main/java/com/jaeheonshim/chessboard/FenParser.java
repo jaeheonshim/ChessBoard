@@ -227,7 +227,9 @@ public class FenParser {
 
         // Set white turn if turn.equals("w") else set black turn (pull request #6)
 
-        // Parse castling square and add it to the board
+        // Parse castling availability and add it to the board
+
+        // Parse en passant square and add it to the board
 
         // Integer.parseInt halfMoveClock and set it to the board
 
