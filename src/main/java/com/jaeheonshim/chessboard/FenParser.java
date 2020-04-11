@@ -226,16 +226,16 @@ public class FenParser {
         }
 
         if (turn.equals("w")) {
-            // TODO: set white turn (Pull request #6)
+            // Set white turn (Pull request #6)
         } else {
-            // TODO: set black turn (Pull request #6)
+            // Set black turn (Pull request #6)
         }
 
-        // TODO: parse castling square and add it to the board
+        // Parse castling square and add it to the board
 
-        // TODO: Integer.parseInt halfMoveClock and set it to the board
+        // Integer.parseInt halfMoveClock and set it to the board
 
-        // TODO: Integer.parseInt moveNumber and set it to the board
+        // Integer.parseInt moveNumber and set it to the board
     }
 
     public boolean isFenValid() {
