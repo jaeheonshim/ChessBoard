@@ -225,11 +225,7 @@ public class FenParser {
             }
         }
 
-        if (turn.equals("w")) {
-            // Set white turn (Pull request #6)
-        } else {
-            // Set black turn (Pull request #6)
-        }
+        // Set white turn if turn.equals("w") else set black turn (pull request #6)
 
         // Parse castling square and add it to the board
 
