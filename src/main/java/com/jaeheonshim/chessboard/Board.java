@@ -4,7 +4,6 @@ import com.jaeheonshim.chessboard.piece.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,6 +14,7 @@ import java.util.List;
 public class Board {
     private Spot[][] board = new Spot[8][8];
     private List<Move> moves = new ArrayList<>();
+    private boolean whiteToMove = true;
 
     public Board() {
         resetBoard();
@@ -25,6 +25,8 @@ public class Board {
      */
     public void resetBoard() {
         Spot[][] blankBoard = new Spot[8][8];
+        whiteToMove = true;
+
         for (int i = 0; i < blankBoard.length; i++) {
             for (int j = 0; j < blankBoard.length; j++) {
                 blankBoard[i][j] = new Spot(j, i, null);
@@ -137,6 +139,15 @@ public class Board {
         return move(begin, end, true);
     }
 
+    /**
+     * Adds a move to the Moves List and swaps the current turn.
+     * @param move move to be added.
+     */
+    private void addMove(Move move) {
+        moves.add(move);
+        whiteToMove = !whiteToMove;
+    }
+
     private boolean move(Spot begin, Spot end, boolean ignoreTurn) {
         Move move = new Move(begin, end, isWhiteTurn());
         if (!ignoreTurn && begin.getPiece().isWhite() != isWhiteTurn()) {
@@ -153,7 +164,7 @@ public class Board {
                     this.getSpot(0, end.getY()).setPiece(null);
                     this.getSpot(end.getX() + 1, end.getY()).setPiece(rook);
 
-                    moves.add(move);
+                    addMove(move);
                     return true;
                 } else if (end.getX() == 6) {
                     end.setPiece(begin.getPiece());
@@ -164,7 +175,7 @@ public class Board {
                     this.getSpot(end.getX() - 1, end.getY()).setPiece(rook);
                     rook.setMoved();
 
-                    moves.add(move);
+                    addMove(move);
                     return true;
                 } else {
                     return false;
@@ -185,7 +196,7 @@ public class Board {
                 end.setPiece(new Queen(end.getPiece().isWhite()));
             }
 
-            moves.add(move);
+            addMove(move);
             return true;
         } else {
             return false;
@@ -337,22 +348,15 @@ public class Board {
     }
 
     public boolean isWhiteTurn() {
-        if (moves.size() == 0) {
-            return true;
-        }
+        return whiteToMove;
+    }
 
-        int whiteMoves = 0;
-        int blackMoves = 0;
-
-        for (Move move : moves) {
-            if (move.isWhiteMove()) {
-                whiteMoves++;
-            } else {
-                blackMoves++;
-            }
-        }
-
-        return whiteMoves <= blackMoves;
+    /**
+     * Forces which side has to move.
+     * @param whiteToMove true for white, false for black.
+     */
+    public void setWhiteToMove(boolean whiteToMove) {
+        this.whiteToMove = whiteToMove;
     }
 
     private String getFenPiecePlacement() {
