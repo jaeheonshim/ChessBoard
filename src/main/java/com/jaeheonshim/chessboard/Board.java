@@ -72,6 +72,18 @@ public class Board {
     }
 
     /**
+     * Loads a position from a FEN to the board.
+     * @param fen the specified FEN.
+     */
+    public void loadFromFen(String fen) {
+        FenParser fenParser = new FenParser(fen);
+        if (fenParser.isFenValid()) {
+            clear();
+            fenParser.setupBoard(this);
+        }
+    }
+
+    /**
      * Returns a Spot on the board based on given coordinates
      * (0, 0) is defined as the bottom left corner
      *
